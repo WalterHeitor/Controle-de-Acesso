@@ -15,18 +15,14 @@ import java.util.List;
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
-    private String cpf;
-    private String login;
-    private String senha;
-    private String telefone;
     private String email;
-    private Date dataUltimoAcesso;
+    private String senha;
+    private Boolean ativo;
 
-    @Column(length = 75, nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role;
+//    @Column(length = 75, nullable = false)
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
 
     @ManyToMany
     @JoinTable(name = "usuario_papel",

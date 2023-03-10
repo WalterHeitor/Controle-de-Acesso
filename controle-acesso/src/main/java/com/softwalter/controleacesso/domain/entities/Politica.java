@@ -3,6 +3,7 @@ package com.softwalter.controleacesso.domain.entities;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tb_politica")
 public class Politica {
 
     @Id
