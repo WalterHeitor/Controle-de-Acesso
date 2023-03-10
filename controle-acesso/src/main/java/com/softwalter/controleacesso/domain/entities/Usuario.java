@@ -6,11 +6,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 @Data @EqualsAndHashCode @Builder
 @Entity
-@Table(name = "usuario")
+@Table(name = "tb_usuario")
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,9 +22,15 @@ public class Usuario {
     private String senha;
     private String telefone;
     private String email;
-    private String dataNascimento;
+    private Date dataUltimoAcesso;
 
     @Column(length = 75, nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @ManyToMany
+    @JoinTable(name = "usuario_papel",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "papel_id"))
+    private List<Papel> papeis;
 }
